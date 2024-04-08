@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const userRoutes = require("./routes/user");
 const profileRoutes = require("./routes/profile");
-const courseRoutes = require("./routes/Course");
+const courseRoutes = require("./routes/course");
 const paymentRoutes = require("./routes/Payments");
 const contactUsRoute = require("./routes/Contact");
 const database = require("./config/database");
@@ -21,7 +21,7 @@ dotenv.config();
 
 // Connecting to database
 database.connect();
- 
+
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
