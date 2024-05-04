@@ -184,7 +184,7 @@ function Home() {
 
         {/* Reviews from Other Learner */}
         <h1 className="text-center text-4xl font-semibold mt-8">
-          Reviews from other learners
+          Reviews from other Learners
         </h1>
         <ReviewSlider />
       </div>
