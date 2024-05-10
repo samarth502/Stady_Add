@@ -8,7 +8,7 @@ import "swiper/css/free-mode"
 import "swiper/css/pagination"
 
 // Import required modules
-import { FreeMode, Pagination } from "swiper"
+import { FreeMode, Navigation, Pagination } from "swiper"
 
 import Course_Card from "./Course_Card"
 
@@ -18,9 +18,15 @@ function Course_Slider({ Courses }) {
       {Courses?.length ? (
         <Swiper
           slidesPerView={1}
-          spaceBetween={25}
+          spaceBetween={200}
+          pagination={true}
           loop={true}
-          modules={[FreeMode, Pagination]}
+          modules={[FreeMode, Pagination, Navigation]}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          navigation={true}
           breakpoints={{
             1024: {
               slidesPerView: 3,
