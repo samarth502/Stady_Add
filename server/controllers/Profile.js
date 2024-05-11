@@ -7,59 +7,7 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const mongoose = require("mongoose");
 const { convertSecondsToDuration } = require("../utils/secToDuration");
 
-// Method for updating a profile
-// exports.updateProfile = async (req, res) => {
-//   try {
-//     const {
-//       firstName = "",
-//       lastName = "",
-//       dateOfBirth = "",
-//       about = "",
-//       contactNumber = "",
-//       gender = "",
-//     } = req.body;
-
-//     const id = req.user.id;
-
-//     // Find the profile by id
-//     const userDetails = await User.findById(id)
-//     const profile = await Profile.findById(userDetails.additionalDetails)
-
-//     const user = await User.findByIdAndUpdate(id, {
-//       firstName,
-//       lastName,
-//     })
-//     await user.save()
-
-//     // Update the profile fields
-//     profile.dateOfBirth = dateOfBirth;
-//     profile.about = about;
-//     profile.contactNumber = contactNumber;
-//     profile.gender = gender;
-
-//     // Save the updated profile
-//     await profile.save();
-
-//     // Find the updated user details
-//     const updatedUserDetails = await User.findById(id)
-//       .populate("additionalDetails")
-//       .exec()
-
-//     return res.json({
-//       success: true,
-//       message: "Profile updated successfully",
-//       updatedUserDetails,
-//       // profile,
-//     })
-//   } catch (error) {
-//     console.log(error)
-//     return res.status(500).json({
-//       success: false,
-//       error: error.message,
-//     })
-//   }
-// }
-
+// Profile Update
 exports.updateProfile = async (req, res) => {
   try {
     const { dateOfBirth = "", about = "", contactNumber = "", gender = "" } = req.body;
@@ -92,7 +40,7 @@ exports.updateProfile = async (req, res) => {
   }
 };
 
-
+//Delete Account
 exports.deleteAccount = async (req, res) => {
   try {
     const id = req.user.id
@@ -130,6 +78,7 @@ exports.deleteAccount = async (req, res) => {
   }
 }
 
+// Get All Users Details
 exports.getAllUserDetails = async (req, res) => {
   try {
     const id = req.user.id
@@ -150,6 +99,7 @@ exports.getAllUserDetails = async (req, res) => {
   }
 }
 
+// Update Display Picture 
 exports.updateDisplayPicture = async (req, res) => {
   try {
     const displayPicture = req.files.displayPicture
@@ -179,6 +129,7 @@ exports.updateDisplayPicture = async (req, res) => {
   }
 }
 
+// Get Enrolled Courses 
 exports.getEnrolledCourses = async (req, res) => {
   try {
     const userId = req.user.id
@@ -245,7 +196,7 @@ exports.getEnrolledCourses = async (req, res) => {
   }
 }
 
-//Instructor dashboard
+//Instructor Dashboard
 exports.instructorDashboard = async (req, res) => {
   try {
     const courseDetails = await Course.find({ instructor: req.user.id })
